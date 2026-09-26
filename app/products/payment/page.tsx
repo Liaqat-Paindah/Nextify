@@ -48,21 +48,15 @@ const plans: Plan[] = [
 export default function Pricing() {
   const { isAuthenticated } = useAuth();
   const router = useRouter();
-
   const [billing, setBilling] = useState<BillingInterval>("monthly");
-
   const [loadingPlan, setLoadingPlan] = useState<PlanId | null>(null);
-
   const [error, setError] = useState<string | null>(null);
-
   const checkout = useCheckout();
-
   const handleNext = (planId: PlanId) => {
     if (!isAuthenticated) {
       router.push("/login");
       return;
     }
-
     setLoadingPlan(planId);
     setError(null);
 
@@ -207,10 +201,10 @@ export default function Pricing() {
                     type="button"
                     onClick={() => handleNext(plan.id)}
                     disabled={checkout.isPending}
-                    className={`mt-8 flex w-full items-center justify-center gap-2 rounded-sm px-5 py-3.5 text-sm font-semibold transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60 ${
+                    className={`mt-8 flex w-full items-center justify-center gap-2 cursor-pointer rounded-sm px-5 py-3.5 text-sm font-semibold transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60 ${
                       plan.popular
-                        ? "bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 text-white shadow-sm shadow-blue-500/25 hover:scale-[1.02] hover:shadow-sm hover:shadow-blue-500/30"
-                        : "bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
+                        ? "bg-linear-to-r from-cyan-500 via-blue-600 cursor-pointer to-purple-600 text-white shadow-sm shadow-blue-500/25 hover:scale-[1.02] hover:shadow-sm hover:shadow-blue-500/30"
+                        : "bg-slate-900 text-white hover:bg-slate-800 dark:bg-white cursor-pointer dark:text-slate-900 dark:hover:bg-slate-200"
                     }`}
                   >
                     {isLoading ? "Starting checkout..." : "Get started"}

@@ -79,12 +79,7 @@ export async function POST(req: NextRequest) {
     const stripe = getStripe();
 
     const origin = req.nextUrl.origin;
-console.log("Creating Stripe subscription checkout:", {
-  planId,
-  billing,
-  priceId,
-  mode: "subscription",
-});
+
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
       line_items: [
@@ -94,10 +89,7 @@ console.log("Creating Stripe subscription checkout:", {
         },
       ],
 
-      success_url:
-        `${origin}/products/payment` +
-        `?checkout=success` +
-        `&session_id={CHECKOUT_SESSION_ID}`,
+      success_url:   `${origin}/products/payment` + `?checkout=success` + `&session_id={CHECKOUT_SESSION_ID}`,
 
       cancel_url: `${origin}/products/payment` + `?checkout=cancelled`,
 
