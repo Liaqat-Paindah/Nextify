@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { AuthProvider } from "@/components/providers/auth-provider";
 import Header from "@/components/common/navbar";
+import Footer from "@/components/common/footer";
 import QueryProvider from "@/components/providers/QueryProvider";
 
 
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Header />
 
             {children}
+            <Footer />
           </AuthProvider>
         </ThemeProvider>
         </QueryProvider>
