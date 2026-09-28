@@ -31,3 +31,28 @@ export const useCheckout = () => {
   });
 };
 
+
+
+
+
+export function usePortal() {
+
+  return useMutation({
+    mutationFn: async () => {
+      const { data } = await axios.post("/api/stripe/portal");
+
+      return data;
+    },
+
+    onSuccess: (data) => {
+      window.location.href = data.url;
+    },
+
+    onError: (error) => {
+           console.error(
+        "Failed to create Stripe Customer Portal session:",
+         error.message
+      );
+    },
+  });
+}
