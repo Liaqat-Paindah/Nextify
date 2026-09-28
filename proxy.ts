@@ -2,13 +2,14 @@ import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
 
 const PUBLIC_ROUTES = [
+  "/about",
+  "/contact",
   "/login",
   "/register",
   "/api/auth/login",
   "/api/auth/register",
   "/api/stripe/webhook",
   "/api/auth/register",
-  "/products"
 ];
 
 interface JwtPayload {
@@ -16,7 +17,7 @@ interface JwtPayload {
 }
 
 function isPublicRoute(pathname: string): boolean {
-  return PUBLIC_ROUTES.some(
+  return pathname === "/" || PUBLIC_ROUTES.some(
     (route) =>
       pathname === route || pathname.startsWith(`${route}/`)
   );

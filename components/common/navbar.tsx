@@ -1,11 +1,10 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useState, useCallback } from "react";
 import menuData from "./menuData";
 import { useAuth } from "@/stores/userAuth";
-import { ModeToggle } from "./toggler";
 
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -13,7 +12,7 @@ const Header = () => {
     setNavbarOpen((prev) => !prev);
   };
 
-  const {user, isAuthenticated, isLoading}=useAuth();
+  const {user, isAuthenticated}=useAuth();
 
 
   const pathname = usePathname();
@@ -42,14 +41,6 @@ const Header = () => {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
-    const router = useRouter();
-
-useEffect(() => {
-  if (!isLoading && !isAuthenticated) {
-    router.push("/login");
-  }
-}, [isLoading, isAuthenticated, router]);
-
   return (
     <>
       <header
@@ -373,21 +364,6 @@ useEffect(() => {
                       </li>
                     ))}
 
-                    {/* Mobile Auth Button - Compact */}
-                    <li className="pt-3">
-                      <Link
-                        href="/journey"
-                        onClick={() => setNavbarOpen(false)}
-                        className="flex w-full items-center justify-center px-3 py-2.5 rounded-sm
-                text-sm font-medium text-blue-900 dark:text-blue-400
-                border border-blue-200 hover:border-blue-500 dark:border-gray-700 dark:hover:border-primary
-                transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 dark:hover:shadow-primary/20
-                bg-linear-to-r from-transparent to-transparent
-                hover:from-blue-50 hover:to-transparent dark:hover:from-gray-800"
-                      >
-                        Start Your Scholarship Journey
-                      </Link>
-                    </li>
                     <li className="pt-2">
                       <Link
                         href="/login"
