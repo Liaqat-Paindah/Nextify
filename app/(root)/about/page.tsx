@@ -1,8 +1,8 @@
 "use client";
 
 import { Suspense } from "react";
-import Loading from "./loading";
-import HomePage from "@/components/root/home";
+import AboutPage from "@/components/root/about";
+import Loading from "@/app/loading";
 export default function Home() {
   return (
     <div>
@@ -13,7 +13,7 @@ export default function Home() {
           </>
         }
       >
-        <HomePage></HomePage>
+        <AboutPage></AboutPage>
       </Suspense>
     </div>
   );

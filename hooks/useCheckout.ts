@@ -47,12 +47,5 @@ export function usePortal() {
     onSuccess: (data) => {
       window.location.href = data.url;
     },
-
-    onError: (error) => {
-           console.error(
-        "Failed to create Stripe Customer Portal session:",
-         error.message
-      );
-    },
   });
 }
