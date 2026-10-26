@@ -76,7 +76,7 @@ export default function AboutPage() {
           </div>
 
           <h1 className="mt-7 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            Making it easier to find
+            Making it easier to find - Start
             <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
               {" "}
               trusted local services.
